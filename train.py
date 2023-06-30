@@ -8,9 +8,9 @@ import os.path as osp
 from datetime import datetime
 
 import torch
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, RandomSampler
 from torchvision import datasets, transforms
-from pytorch_metric_learning import distances, losses, miners, reducers, testers
+from pytorch_metric_learning import distances, losses, miners, reducers, samplers
 
 from sklearn.metrics import f1_score, roc_auc_score
 from config import cfg
@@ -31,7 +31,12 @@ def load_train_objs(args):
     
     train_dataset = datasets.ImageFolder(osp.join(args.dataset_dir, 'train'), transform=train_transform)
     
-    return train_dataset, model
+    if args.sampler == 'MPerClassSampler':
+        sampler = samplers.MPerClassSampler(train_dataset.targets, m=4, length_before_new_iter=len(train_dataset))
+    else:
+        sampler = RandomSampler(train_dataset)
+    
+    return train_dataset, sampler, model
 
 
 def train(args, model, train_loader, optimizer, scheduler, epoch, device):
@@ -108,10 +113,10 @@ def main():
     if args.config:
         cfg.merge_from_file(args.config)
 
-    run_started = datetime.today().strftime("%d-%m-%y_%H%M")
+    cfg.run_started = datetime.today().strftime("%d-%m-%y_%H%M")
     device = torch.device('cuda', 0)
     set_seed(cfg.rng_seed)
-    cfg.out = osp.join(cfg.out, f'{run_started}')
+    cfg.out = osp.join(cfg.out, f'{cfg.run_started}')
     os.makedirs(cfg.out, exist_ok=True)
     
     # wandb init
@@ -123,14 +128,14 @@ def main():
                allow_val_change=True,
                settings=wandb.Settings(start_method="fork"))
     
-    train_dataset, model = load_train_objs(cfg)
+    train_dataset, sampler, model = load_train_objs(cfg)
     model.to(device)
     
     # validation dataset
     df = pd.read_csv(osp.join(cfg.dataset_dir, 'val.csv'))
     val_transform = transform(cfg, split='val')
     val_dataset = PairwiseDataset(osp.join(cfg.dataset_dir, 'val'), df, val_transform)
-    train_loader = DataLoader(train_dataset, batch_size=cfg.train_batch, num_workers=cfg.num_workers, shuffle=True, pin_memory=True)
+    train_loader = DataLoader(train_dataset, batch_size=cfg.train_batch, num_workers=cfg.num_workers, sampler=sampler, pin_memory=True)
     val_loader = DataLoader(val_dataset, batch_size=cfg.val_batch, num_workers=cfg.num_workers, shuffle=False, pin_memory=True)
     
     optimizer, scheduler = get_optimizer_and_scheduler(cfg, model.get_parameters())
@@ -174,5 +179,5 @@ def main():
     
 
 if __name__ == '__main__':
-    os.environ['CUDA_VISIBLE_DEVICES']='0'
+    os.environ['CUDA_VISIBLE_DEVICES']='7'
     main()

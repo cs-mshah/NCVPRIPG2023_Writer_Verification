@@ -1,5 +1,6 @@
 import os
 from yacs.config import CfgNode as CN
+import argparse
 
 # global config object
 _C = CN()
@@ -22,12 +23,14 @@ _C.cfg_base = 'cfg.yaml'
 _C.resume = ''
 # train batch size
 _C.train_batch = 128
+# sampler
+_C.sampler = 'MPerClassSampler'
 # val batch size
 _C.val_batch = 32
 # image size
 _C.img_size = 224
 # initial width crop
-_C.width_crop = 350
+_C.width_crop = 0
 # optimizer
 _C.optimizer = 'adam'
 # lr
@@ -52,10 +55,10 @@ _C.embed_dim = 64
 # margin
 _C.margin = 0.2
 # type_of_triplets
-_C.type_of_triplets = 'semihard'
+_C.type_of_triplets = 'all'
 
 # number of epochs
-_C.epochs = 80
+_C.epochs = 40
 
 # ----------------default config-------------------------------- #
 
@@ -72,4 +75,8 @@ def dump_cfg(config_name='cfg.yaml'):
         _C.dump(stream=f)
 
 if __name__ == '__main__':
-    dump_cfg(_C.cfg_base)
+    parser = argparse.ArgumentParser(description='NCVPRIG23 Writer Verification Config Dump')
+    parser.add_argument('--name', default='cfg.yaml', required=False, type=str, help='path to yaml config')
+    args = parser.parse_args()
+    
+    dump_cfg(args.name)
