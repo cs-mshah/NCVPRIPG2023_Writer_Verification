@@ -58,7 +58,7 @@ _C.margin = 0.2
 _C.type_of_triplets = 'all'
 
 # number of epochs
-_C.epochs = 40
+_C.epochs = 10
 
 # ----------------default config-------------------------------- #
 
