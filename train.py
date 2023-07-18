@@ -121,7 +121,7 @@ def main():
     
     # wandb init
     wandb.init(entity='manan-shah',
-               project='NCVPRIG23 Writer Verification',
+               project='NCVPRIPG23 Writer Verification',
                config=cfg,
                id=None,
                resume='allow',

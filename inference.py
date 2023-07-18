@@ -126,9 +126,10 @@ if __name__ == '__main__':
     load_state_dict = modify_state_dict(load_state_dict, 'remove_prefix', '_orig_mod.')
     model.load_state_dict(load_state_dict, strict=True)
     
-    df = pd.read_csv(osp.join(cfg.dataset_dir, f'{args.mode}.csv')) # make sure this is the test set
+    csv_file = f'finale-test-pairs.csv'
+    df = pd.read_csv(osp.join(cfg.dataset_dir, csv_file)) # make sure this is the test set csv
     val_transform = transform(cfg, split='val')
-    split_dir = 'semi_test'
+    split_dir = 'test' # change this (semi_test or test)
     y_true = None
     if args.mode == 'val':
         split_dir = 'val'

@@ -1,12 +1,12 @@
-# NCVPRIG 2023 Challenge on Writer Verification
+# NCVPRIPG 2023 Challenge on Writer Verification
 
 ![](https://vl2g.github.io/challenges/wv2023/images/intro_figure.png)
 
 **Challenge Webpage**: [Summer Challenge on Writer Verification, under NCVPRIPG'23](https://vl2g.github.io/challenges/wv2023)  
 
-**Kaggle Link**: [Summer Challenge on Writer Verification](https://www.kaggle.com/competitions/writer-verification-on-summer-challenge/overview)  
+**Kaggle Link**: [Summer Challenge on Writer Verification](https://www.kaggle.com/competitions/summer-challenge-on-writer-verification23-finale/leaderboard)  
 
-**Wandb logs**: [wandb](https://wandb.ai/manan-shah/NCVPRIG23%20Writer%20Verification?workspace=user-manan-shah)
+**Wandb logs**: [wandb](https://wandb.ai/manan-shah/NCVPRIPG23%20Writer%20Verification?workspace=user-manan-shah)
 
 **Team Name**: MaSha
 
@@ -37,7 +37,7 @@ python inference.py --ckpt pretrained/model_best_base.pth.tar
 
 ## Training
 
-All runs have been logged using [wandb](https://wandb.ai/manan-shah/NCVPRIG23%20Writer%20Verification?workspace=user-manan-shah)
+All runs have been logged using [wandb](https://wandb.ai/manan-shah/NCVPRIPG23%20Writer%20Verification?workspace=user-manan-shah)
 
 To start training, run
 ```shell
