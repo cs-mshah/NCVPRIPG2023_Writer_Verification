@@ -107,7 +107,7 @@ def test(cfg, model, test_loader, epoch, device):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='NCVPRIG23 Writer Verification')
+    parser = argparse.ArgumentParser(description='NCVPRIPG23 Writer Verification')
     parser.add_argument('--config', required=False, type=str, help='path to yaml config')
     args = parser.parse_args()
     if args.config:
@@ -121,7 +121,7 @@ def main():
     
     # wandb init
     wandb.init(entity='manan-shah',
-               project='NCVPRIPG23 Writer Verification',
+               project='NCVPRIPG23-Writer-Verification',
                config=cfg,
                id=None,
                resume='allow',

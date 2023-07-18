@@ -6,7 +6,7 @@
 
 **Kaggle Link**: [Summer Challenge on Writer Verification](https://www.kaggle.com/competitions/summer-challenge-on-writer-verification23-finale/leaderboard)  
 
-**Wandb logs**: [wandb](https://wandb.ai/manan-shah/NCVPRIPG23%20Writer%20Verification?workspace=user-manan-shah)
+**Wandb logs**: [wandb](https://wandb.ai/manan-shah/NCVPRIPG23-Writer-Verification/table?workspace=user-manan-shah)
 
 **Team Name**: MaSha
 
@@ -37,7 +37,7 @@ python inference.py --ckpt pretrained/model_best_base.pth.tar
 
 ## Training
 
-All runs have been logged using [wandb](https://wandb.ai/manan-shah/NCVPRIPG23%20Writer%20Verification?workspace=user-manan-shah)
+All runs have been logged using [wandb](https://wandb.ai/manan-shah/NCVPRIPG23-Writer-Verification/table?workspace=user-manan-shah)
 
 To start training, run
 ```shell
