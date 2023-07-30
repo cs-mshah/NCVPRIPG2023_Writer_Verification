@@ -3,7 +3,7 @@
 ![](https://vl2g.github.io/challenges/wv2023/images/intro_figure.png)
 
 **Challenge Webpage**: [Summer Challenge on Writer Verification, under NCVPRIPG'23](https://vl2g.github.io/challenges/wv2023)  
-**Blog Post**: [Winning the NCVPRIPG23 Challenge on Writer Verification](https://github.com/cs-mshah/NCVPRIPG2023_Writer_Verification)  
+**Blog Post**: [Winning the NCVPRIPG23 Challenge on Writer Verification](https://cs-mshah.github.io/ncvpripg23_writer_verification/)  
 **Kaggle Link**: [Summer Challenge on Writer Verification](https://www.kaggle.com/competitions/summer-challenge-on-writer-verification23-finale/leaderboard)  
 **Wandb logs**: [wandb](https://wandb.ai/manan-shah/NCVPRIPG23-Writer-Verification/table?workspace=user-manan-shah)  
 **Team Name**: MaSha  
